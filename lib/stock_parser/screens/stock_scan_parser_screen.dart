@@ -4,6 +4,7 @@ import 'package:stock_scan_parser/common/helpers/extensions.dart';
 import 'package:stock_scan_parser/stock_parser/cubit/stock_scan_parser_cubit.dart';
 import 'package:stock_scan_parser/stock_parser/widgets/stock_scan_parser_widget.dart';
 import 'package:stock_scan_parser/styles/colors/app_color_helper.dart';
+import 'package:stock_scan_parser/styles/themes/text_theme_helper.dart';
 
 class StockScanParserScreen extends StatefulWidget {
   const StockScanParserScreen({super.key});
@@ -32,7 +33,10 @@ class _StockScanParserScreenState extends State<StockScanParserScreen> {
           builder: (_, state) {
             return state.maybeWhen(
               orElse: () {
-                return const SizedBox.shrink();
+                return Text(
+                  "Something went wrong while getting data",
+                  style: TextThemeHelper.white_16_600,
+                );
               },
               loading: () {
                 return const Center(

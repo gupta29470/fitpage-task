@@ -5,7 +5,12 @@ import 'package:stock_scan_parser/network/helpers/base_network_response.dart';
 
 class APIBaseHelper {
   static const String tag = "APIBaseHelper";
-  Dio dio = Dio();
+
+  static Dio dio = Dio(
+    BaseOptions(
+      baseUrl: "http://coding-assignment.bombayrunning.com",
+    ),
+  );
 
   Future<BaseNetworkResponse> get({
     required String url,

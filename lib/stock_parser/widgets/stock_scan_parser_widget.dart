@@ -5,6 +5,7 @@ import 'package:stock_scan_parser/stock_parser/models/criteria_screen_args.dart'
 import 'package:stock_scan_parser/stock_parser/models/stock_scan_parser_model.dart';
 import 'package:stock_scan_parser/stock_parser/widgets/stock_scan_header_widget.dart';
 import 'package:stock_scan_parser/styles/colors/app_color_helper.dart';
+import 'package:stock_scan_parser/styles/themes/text_theme_helper.dart';
 
 part '../stock_parser_extension/stock_scan_parser_widget_ext.dart';
 
@@ -56,7 +57,10 @@ class _StockScanParserWidgetState extends State<StockScanParserWidget> {
             ],
           );
         }
-        return const SizedBox.shrink();
+        return Text(
+          "Data Not Available",
+          style: TextThemeHelper.white_16_600,
+        );
       },
     );
   }

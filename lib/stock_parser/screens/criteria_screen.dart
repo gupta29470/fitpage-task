@@ -168,7 +168,10 @@ class _CriteriaScreenState extends State<CriteriaScreen> {
                       );
                     }
                   }
-                  return const SizedBox.shrink();
+                  return Text(
+                    "Data Not Available",
+                    style: TextThemeHelper.white_16_600,
+                  );
                 },
               ),
             ),
