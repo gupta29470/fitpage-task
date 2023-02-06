@@ -12,7 +12,7 @@ import 'package:stock_scan_parser/styles/themes/text_theme_helper.dart';
 
 part '../stock_parser_extension/criteria_screen_ext.dart';
 
-class CriteriaScreen extends StatefulWidget {
+class CriteriaScreen extends StatelessWidget {
   static const String tag = "CriteriaScreen";
 
   final CriteriaScreenArgs criteriaScreenArgs;
@@ -22,11 +22,6 @@ class CriteriaScreen extends StatefulWidget {
     required this.criteriaScreenArgs,
   });
 
-  @override
-  State<CriteriaScreen> createState() => _CriteriaScreenState();
-}
-
-class _CriteriaScreenState extends State<CriteriaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,16 +61,16 @@ class _CriteriaScreenState extends State<CriteriaScreen> {
                 52,
               ),
               child: StockScanHeaderWidget(
-                tag: widget.criteriaScreenArgs.tag,
-                name: widget.criteriaScreenArgs.name,
+                tag: criteriaScreenArgs.tag,
+                name: criteriaScreenArgs.name,
               ),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: widget.criteriaScreenArgs.criteriaList.length,
+                itemCount: criteriaScreenArgs.criteriaList.length,
                 itemBuilder: (_, index1) {
                   CriteriaModel criteriaModel =
-                      widget.criteriaScreenArgs.criteriaList[index1];
+                      criteriaScreenArgs.criteriaList[index1];
 
                   if (AppHelper.isNotEmpty(criteriaModel.type) &&
                       criteriaModel.text != null &&
@@ -98,8 +93,7 @@ class _CriteriaScreenState extends State<CriteriaScreen> {
                                 ),
                               ),
                               if (index1 <
-                                  (widget.criteriaScreenArgs.criteriaList
-                                          .length -
+                                  (criteriaScreenArgs.criteriaList.length -
                                       1)) ...[
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 16),
@@ -131,11 +125,12 @@ class _CriteriaScreenState extends State<CriteriaScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         navigateToDesiredScreen(
-                                            variable: criteriaModel.variable,
-                                            currentValue:
-                                                criteriaModel.text?[index2],
-                                            name:
-                                                widget.criteriaScreenArgs.name);
+                                          variable: criteriaModel.variable,
+                                          currentValue:
+                                              criteriaModel.text?[index2],
+                                          name: criteriaScreenArgs.name,
+                                          context: context,
+                                        );
                                       },
                                       child: Text(
                                         "(${criteriaModel.text?[index2]})",
@@ -154,8 +149,7 @@ class _CriteriaScreenState extends State<CriteriaScreen> {
                             ),
                           ),
                           if (index1 <
-                              (widget.criteriaScreenArgs.criteriaList.length -
-                                  1)) ...[
+                              (criteriaScreenArgs.criteriaList.length - 1)) ...[
                             Padding(
                               padding: const EdgeInsets.only(bottom: 16),
                               child: Text(

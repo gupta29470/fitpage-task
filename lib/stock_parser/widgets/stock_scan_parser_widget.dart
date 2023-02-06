@@ -52,6 +52,7 @@ class _StockScanParserWidgetState extends State<StockScanParserWidget> {
                 ),
               ),
               const Divider(
+                thickness: 1,
                 color: AppColorHelper.white,
               ),
             ],

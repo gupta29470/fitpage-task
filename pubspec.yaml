@@ -36,13 +36,13 @@ dependencies:
   freezed: any
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
-  mockito: ^5.3.2
   http_mock_adapter: ^0.3.3
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:

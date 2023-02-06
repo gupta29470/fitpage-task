@@ -1,18 +1,37 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:stock_scan_parser/network/helpers/base_network_response.dart';
 
 class APIBaseHelper {
   static const String tag = "APIBaseHelper";
 
-  static Dio dio = Dio(
-    BaseOptions(
-      baseUrl: "http://coding-assignment.bombayrunning.com",
-    ),
-  );
+  static Dio? _dio;
 
-  Future<BaseNetworkResponse> get({
+  static void init() {
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: "http://coding-assignment.bombayrunning.com",
+      ),
+    );
+  }
+
+  static get dio {
+    if (_dio == null) {
+      throw FlutterError(
+          "Dio is not inittialised, please call init before accessing dio");
+    } else {
+      return _dio;
+    }
+  }
+
+  static closeDio() {
+    _dio?.close();
+    _dio = null;
+  }
+
+  static Future<BaseNetworkResponse> get({
     required String url,
   }) async {
     late BaseNetworkResponse baseNetworkResponse;

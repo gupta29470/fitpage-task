@@ -14,7 +14,7 @@ class StockScanParserCubit extends Cubit<StockScanParserState> {
           const StockScanParserState.initial(),
         );
 
-  void getStockParserData() async {
+  Future<void> getStockParserData() async {
     emit(const StockScanParserState.loading());
     try {
       List<StockScanParserModel?> stockScanParserModelList =

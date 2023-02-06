@@ -9,18 +9,20 @@ import 'package:stock_scan_parser/stock_parser/models/stock_scan_parser_model.da
 class StockScanParserRepository {
   static const String tag = "StockScanParserRepository";
 
-  final APIBaseHelper _apiBaseHelper = APIBaseHelper();
+  StockScanParserRepository() {
+    APIBaseHelper.init();
+  }
 
   Future<List<StockScanParserModel?>> getStockParserData() async {
     try {
       BaseNetworkResponse response =
-          await _apiBaseHelper.get(url: APIs.getStockScanParser);
+          await APIBaseHelper.get(url: APIs.getStockScanParser);
 
       if (response.isSuccess() &&
           response.response?.data != null &&
           response.response?.data.isNotEmpty) {
         return AppHelper.convertToStockParserModel(
-          response: response.response,
+          data: response.response?.data,
         );
       } else {
         log("$tag ====== ${response.httpCode}");

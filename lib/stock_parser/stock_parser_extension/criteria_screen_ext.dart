@@ -1,6 +1,6 @@
 part of '../screens/criteria_screen.dart';
 
-extension on _CriteriaScreenState {
+extension on CriteriaScreen {
   bool isPlainText(String? type) {
     return type == "plain_text";
   }
@@ -9,6 +9,7 @@ extension on _CriteriaScreenState {
     required Map<String, VariableModel?>? variable,
     required int? currentValue,
     required String? name,
+    required BuildContext context,
   }) {
     bool isDefault = false;
     List<int?> values = [];

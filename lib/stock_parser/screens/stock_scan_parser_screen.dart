@@ -51,7 +51,13 @@ class _StockScanParserScreenState extends State<StockScanParserScreen> {
                 );
               },
               failure: (errorText) {
-                return Text(errorText);
+                return Center(
+                  child: Text(
+                    errorText,
+                    style: TextThemeHelper.white_16_600,
+                    textAlign: TextAlign.center,
+                  ),
+                );
               },
             );
           },
